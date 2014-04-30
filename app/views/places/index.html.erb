@@ -1,0 +1,38 @@
+
+<section id="info">
+
+	<header>
+ 		<h1><a href="#">Burgers and Beer</a></h1>
+		<h2>London's best</h2>
+  	</header>
+
+  	<!-- This form sends the info specified to the URL.... -->
+  	<form>
+  		<input type="text" name="search" placeholder="Search">
+  	</form>
+
+	<ul>
+
+		<% @places.each do |place| %>
+			<li data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>">
+				<h3><%= link_to place.name, place_path(place) %></h3>
+				<p><%= place.address %></p>
+				<% if params[:search].present? %>
+					<p> 
+						<%= place.distance_to(params[:search]).round(2) %> 
+						<!-- find the distance from the searched place and rounds the distance to 2dp -->
+						km away 
+					</p>
+				<% end %>
+			</li>
+		<% end %>
+
+  </ul>
+
+  <%= paginate @places %>
+
+</section>
+
+<section id="map"></section>
+
+<%= link_to "Add a new place", new_place_path, class: "button" %>

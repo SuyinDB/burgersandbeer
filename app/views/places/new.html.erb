@@ -1,0 +1,11 @@
+
+<h1>Add a New Place</h1>
+
+<%= simple_form_for @place do |form| %>
+
+	<%= form.input :name %>
+	<%= form.input :address %>
+
+	<%= form.button :submit %>
+
+<% end %>

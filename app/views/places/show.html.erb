@@ -1,0 +1,17 @@
+<h2><%= @place.name %> </h2>
+
+<p><%= @place.address %> <p>
+
+	<% @place.reviews.each do |review| %>
+<div class = "review">
+	<%= simple_format review.body %>
+	<!-- time helper -->
+	<p><%= time_ago_in_words review.created_at %> ago </p>
+</div>
+<% end %>
+<p>
+	<!-- specifiying that this new comment is related to the story you're on -->
+	<%= link_to "Add a review", new_place_review_path(@place) %> 
+</p>
+
+<%= link_to "Take me home", root_path %>

@@ -1,0 +1,10 @@
+<h2> Review <%= @place.name %> </h2>
+
+<%= simple_form_for [@place, @review] do |form| %>
+
+	<%= form.input :body, label: "Your review" %>
+	<%= form.input :rating %>
+
+	<%= form.button :submit, "Submit" %>
+
+<% end %>
